@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CA39059119418D02009CDDDE /* MoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA39058F19418D02009CDDDE /* MoviesViewController.m */; };
 		CA39059219418D02009CDDDE /* MoviesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA39059019418D02009CDDDE /* MoviesViewController.xib */; };
+		CABE50A8194242B800C3D8B2 /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CABE50A6194242B800C3D8B2 /* MovieCell.m */; };
+		CABE50A9194242B800C3D8B2 /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CABE50A7194242B800C3D8B2 /* MovieCell.xib */; };
 		CACEF1E819410E22000A5812 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACEF1E719410E22000A5812 /* Foundation.framework */; };
 		CACEF1EA19410E22000A5812 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACEF1E919410E22000A5812 /* CoreGraphics.framework */; };
 		CACEF1EC19410E22000A5812 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACEF1EB19410E22000A5812 /* UIKit.framework */; };
@@ -37,6 +39,9 @@
 		CA39058E19418D02009CDDDE /* MoviesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesViewController.h; sourceTree = "<group>"; };
 		CA39058F19418D02009CDDDE /* MoviesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesViewController.m; sourceTree = "<group>"; };
 		CA39059019418D02009CDDDE /* MoviesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesViewController.xib; sourceTree = "<group>"; };
+		CABE50A5194242B800C3D8B2 /* MovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
+		CABE50A6194242B800C3D8B2 /* MovieCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
+		CABE50A7194242B800C3D8B2 /* MovieCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
 		CACEF1E419410E22000A5812 /* RottenTomatoes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RottenTomatoes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACEF1E719410E22000A5812 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CACEF1E919410E22000A5812 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -119,6 +124,9 @@
 				CA39058E19418D02009CDDDE /* MoviesViewController.h */,
 				CA39058F19418D02009CDDDE /* MoviesViewController.m */,
 				CA39059019418D02009CDDDE /* MoviesViewController.xib */,
+				CABE50A5194242B800C3D8B2 /* MovieCell.h */,
+				CABE50A6194242B800C3D8B2 /* MovieCell.m */,
+				CABE50A7194242B800C3D8B2 /* MovieCell.xib */,
 			);
 			path = RottenTomatoes;
 			sourceTree = "<group>";
@@ -229,6 +237,7 @@
 			files = (
 				CACEF1F219410E22000A5812 /* InfoPlist.strings in Resources */,
 				CA39059219418D02009CDDDE /* MoviesViewController.xib in Resources */,
+				CABE50A9194242B800C3D8B2 /* MovieCell.xib in Resources */,
 				CACEF1FA19410E22000A5812 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,6 +259,7 @@
 			files = (
 				CA39059119418D02009CDDDE /* MoviesViewController.m in Sources */,
 				CACEF1F819410E22000A5812 /* AppDelegate.m in Sources */,
+				CABE50A8194242B800C3D8B2 /* MovieCell.m in Sources */,
 				CACEF1F419410E22000A5812 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,7 +382,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RottenTomatoes/RottenTomatoes-Prefix.pch";
 				INFOPLIST_FILE = "RottenTomatoes/RottenTomatoes-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -386,7 +396,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RottenTomatoes/RottenTomatoes-Prefix.pch";
 				INFOPLIST_FILE = "RottenTomatoes/RottenTomatoes-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
