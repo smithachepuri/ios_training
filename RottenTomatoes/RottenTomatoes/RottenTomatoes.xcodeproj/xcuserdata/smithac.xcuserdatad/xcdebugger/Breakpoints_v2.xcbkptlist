@@ -24,12 +24,12 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[MoviesViewController tableView]"
                   moduleName = "RottenTomatoes"
-                  urlString = "file:///Users/smithac/projects/ios_training/RottenTomatoes/RottenTomatoes/RottenTomatoes/MoviesViewController.m"
-                  timestampString = "423729266.540339"
+                  urlString = "file:///Users/smithac/IOS_training/test_rotten/RottenTomatoes/RottenTomatoes/RottenTomatoes/MoviesViewController.m"
+                  timestampString = "423914422.255756"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
                   offsetFromSymbolStart = "24">
                </Location>
                <Location
@@ -38,12 +38,12 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[MoviesViewController setTableView:]"
                   moduleName = "RottenTomatoes"
-                  urlString = "file:///Users/smithac/projects/ios_training/RottenTomatoes/RottenTomatoes/RottenTomatoes/MoviesViewController.m"
-                  timestampString = "423729266.5405"
+                  urlString = "file:///Users/smithac/IOS_training/test_rotten/RottenTomatoes/RottenTomatoes/RottenTomatoes/MoviesViewController.m"
+                  timestampString = "423914422.255924"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
                   offsetFromSymbolStart = "31">
                </Location>
             </Locations>
