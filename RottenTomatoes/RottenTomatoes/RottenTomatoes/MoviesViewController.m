@@ -7,6 +7,7 @@
 //
 
 #import "MoviesViewController.h"
+#import "MovieCell.h"
 
 @interface MoviesViewController ()
 
@@ -47,6 +48,10 @@
         self.tableView.reloadData;
     }];
     
+    [self.tableView registerNib:[UINib nibWithNibName:@"MovieCell" bundle:nil] forCellReuseIdentifier:@"MovieCell"];
+    
+    self.tableView.rowHeight=100;
+    
     
 }
 
@@ -66,13 +71,15 @@
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell =[[UITableViewCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:nil];
     
+    NSLog(@"cell For RowAt Index path :%d", indexPath.row);
     
+   MovieCell *cell =[tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
+    //UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     NSDictionary *movie = self.movies[indexPath.row] ;
-    
-    cell.textLabel.text = movie[@"title"];
-    
+    cell.movieTitleLabel.text =movie[@"title"];
+    cell.synopsisLabel.text =movie[@"synopsis"];
+    //cell.textLabel.text = movie[@"title"];
     return cell;
 }
 
