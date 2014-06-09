@@ -51,7 +51,7 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"MovieCell" bundle:nil] forCellReuseIdentifier:@"MovieCell"];
     
-    self.tableView.rowHeight=100;
+    self.tableView.rowHeight=150;
     
     
 }
