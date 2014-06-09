@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RottenTomatoes/MoviesViewController.m"
-            timestampString = "423816528.320377"
+            timestampString = "423967347.757924"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "12"
-            endingLineNumber = "12"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
             landmarkName = "@interface MoviesViewController()"
             landmarkType = "2">
             <Locations>
@@ -25,11 +25,11 @@
                   symbolName = "-[MoviesViewController tableView]"
                   moduleName = "RottenTomatoes"
                   urlString = "file:///Users/smithac/IOS_training/test_rotten/RottenTomatoes/RottenTomatoes/RottenTomatoes/MoviesViewController.m"
-                  timestampString = "423914422.255756"
+                  timestampString = "423968349.218707"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
                   offsetFromSymbolStart = "24">
                </Location>
                <Location
@@ -39,11 +39,11 @@
                   symbolName = "-[MoviesViewController setTableView:]"
                   moduleName = "RottenTomatoes"
                   urlString = "file:///Users/smithac/IOS_training/test_rotten/RottenTomatoes/RottenTomatoes/RottenTomatoes/MoviesViewController.m"
-                  timestampString = "423914422.255924"
+                  timestampString = "423968349.218905"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
                   offsetFromSymbolStart = "31">
                </Location>
             </Locations>
@@ -56,11 +56,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RottenTomatoes/MoviesViewController.m"
-            timestampString = "423816528.320377"
+            timestampString = "423967347.757924"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
             landmarkName = "@implementation MoviesViewController"
             landmarkType = "3">
          </BreakpointContent>
