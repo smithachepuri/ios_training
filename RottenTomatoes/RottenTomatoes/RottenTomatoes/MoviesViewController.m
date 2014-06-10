@@ -11,6 +11,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "MovieDetailsViewController.h"
 #import "MBProgressHUD.h"
+#import "ErrorViewCell.h"
 
 @interface MoviesViewController ()
 
@@ -36,13 +37,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    // Do any additional setup after loading the view from its nib.
+// Do any additional setup after loading the view from its nib.
     self.tableView.delegate =self;
     self.tableView.dataSource =self;
     
     
-    NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=g9au4hv6khv6wzvzgt55gpqs";
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"MovieCell" bundle:nil] forCellReuseIdentifier:@"MovieCell"];
+  
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refreshControl];
+    [self loadMoviesList];
+    
+//    self.tableView.rowHeight=125;
+    
+    
+}
+
+-(void)loadMoviesList{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    NSString *url = @"http://localhost/api/public/v1.0/lists/dvds/top_rentals.json?apikey=g9au4hv6khv6wzvzgt55gpqs";
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -50,22 +66,17 @@
         if (data !=nil) {
             id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             NSLog(@"%@", object);
-          self.movies =object[@"movies"];
-
+            self.movies =object[@"movies"];
+            
         } else {
             self.networkFailure = YES;
         }
         
         
-       [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.tableView.reloadData;
     }];
-    
-    [self.tableView registerNib:[UINib nibWithNibName:@"MovieCell" bundle:nil] forCellReuseIdentifier:@"MovieCell"];
-    
-//    self.tableView.rowHeight=125;
-    
-    
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -89,8 +100,9 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if(self.networkFailure) {
-        UITableViewCell *errorCell = [[UITableViewCell alloc] init];
-       [ errorCell setText:@"Network Error"];
+        ErrorViewCell *errorCell = [[ErrorViewCell alloc] init];
+        [errorCell setText:@"Network Error.Please try later"];
+        //errorCell set
         return errorCell;
     }
     NSLog(@"cell For RowAt Index path :%d", indexPath.row);
@@ -113,12 +125,17 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     MovieDetailsViewController *mvc = [[MovieDetailsViewController alloc] init];
-    mvc.title = self.movies[indexPath.row][@"title"];
+    mvc.movieDetailtitle = self.movies[indexPath.row][@"title"];
     mvc.details = self.movies[indexPath.row][@"synopsis"];
     mvc.moviePosterURL  = self.movies[indexPath.row][@"posters"][@"original"];
     [self.navigationController pushViewController:mvc animated:YES];
     
 
+}
+
+- (void)refresh:(UIRefreshControl *)refreshControl {
+    [refreshControl endRefreshing];
+      [self loadMoviesList];
 }
 
 

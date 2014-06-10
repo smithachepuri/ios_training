@@ -12,6 +12,8 @@
 		CA39059219418D02009CDDDE /* MoviesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA39059019418D02009CDDDE /* MoviesViewController.xib */; };
 		CA41622F1946878E0050D0C7 /* MovieDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA41622D1946878E0050D0C7 /* MovieDetailsViewController.m */; };
 		CA4162301946878E0050D0C7 /* MovieDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA41622E1946878E0050D0C7 /* MovieDetailsViewController.xib */; };
+		CA774B2F1946AC8400510FED /* ErrorViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA774B2D1946AC8400510FED /* ErrorViewCell.m */; };
+		CA774B301946AC8400510FED /* ErrorViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA774B2E1946AC8400510FED /* ErrorViewCell.xib */; };
 		CABE50A8194242B800C3D8B2 /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CABE50A6194242B800C3D8B2 /* MovieCell.m */; };
 		CABE50A9194242B800C3D8B2 /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CABE50A7194242B800C3D8B2 /* MovieCell.xib */; };
 		CACEF1E819410E22000A5812 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACEF1E719410E22000A5812 /* Foundation.framework */; };
@@ -46,6 +48,9 @@
 		CA41622C1946878E0050D0C7 /* MovieDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailsViewController.h; sourceTree = "<group>"; };
 		CA41622D1946878E0050D0C7 /* MovieDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDetailsViewController.m; sourceTree = "<group>"; };
 		CA41622E1946878E0050D0C7 /* MovieDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieDetailsViewController.xib; sourceTree = "<group>"; };
+		CA774B2C1946AC8400510FED /* ErrorViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorViewCell.h; sourceTree = "<group>"; };
+		CA774B2D1946AC8400510FED /* ErrorViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorViewCell.m; sourceTree = "<group>"; };
+		CA774B2E1946AC8400510FED /* ErrorViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorViewCell.xib; sourceTree = "<group>"; };
 		CABE50A5194242B800C3D8B2 /* MovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
 		CABE50A6194242B800C3D8B2 /* MovieCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
 		CABE50A7194242B800C3D8B2 /* MovieCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
@@ -141,6 +146,9 @@
 				CA41622C1946878E0050D0C7 /* MovieDetailsViewController.h */,
 				CA41622D1946878E0050D0C7 /* MovieDetailsViewController.m */,
 				CA41622E1946878E0050D0C7 /* MovieDetailsViewController.xib */,
+				CA774B2C1946AC8400510FED /* ErrorViewCell.h */,
+				CA774B2D1946AC8400510FED /* ErrorViewCell.m */,
+				CA774B2E1946AC8400510FED /* ErrorViewCell.xib */,
 			);
 			path = RottenTomatoes;
 			sourceTree = "<group>";
@@ -254,6 +262,7 @@
 				CACEF1F219410E22000A5812 /* InfoPlist.strings in Resources */,
 				CA39059219418D02009CDDDE /* MoviesViewController.xib in Resources */,
 				CABE50A9194242B800C3D8B2 /* MovieCell.xib in Resources */,
+				CA774B301946AC8400510FED /* ErrorViewCell.xib in Resources */,
 				CACEF1FA19410E22000A5812 /* Images.xcassets in Resources */,
 				CA4162301946878E0050D0C7 /* MovieDetailsViewController.xib in Resources */,
 			);
@@ -308,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA41622F1946878E0050D0C7 /* MovieDetailsViewController.m in Sources */,
+				CA774B2F1946AC8400510FED /* ErrorViewCell.m in Sources */,
 				CA39059119418D02009CDDDE /* MoviesViewController.m in Sources */,
 				CACEF1F819410E22000A5812 /* AppDelegate.m in Sources */,
 				CABE50A8194242B800C3D8B2 /* MovieCell.m in Sources */,

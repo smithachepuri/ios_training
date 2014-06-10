@@ -12,7 +12,7 @@
 
 
 
-@property (weak, nonatomic) NSString *title;
+@property (weak, nonatomic) NSString *movieDetailtitle;
 
 @property (weak, nonatomic) NSString  *details;
 

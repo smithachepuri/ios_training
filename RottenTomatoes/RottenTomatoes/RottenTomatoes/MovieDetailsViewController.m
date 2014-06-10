@@ -35,7 +35,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.movieTitle setText:self.title];
+    
+    NSLog(self.movieDetailtitle);
+    [self.movieTitle setText:self.movieDetailtitle];
       [self.movieDetails setText:self.details];
     
     NSURL *url = [NSURL URLWithString:self.moviePosterURL];
