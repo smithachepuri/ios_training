@@ -111,14 +111,14 @@
     return cell;
 }
 
--(void)tableview:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath{
-    
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"testing  ");
     MovieDetailsViewController *mvc = [[MovieDetailsViewController alloc] init];
     [self.navigationController pushViewController:mvc animated:YES];
-    
-    
+
 }
+
+
 
 
 
