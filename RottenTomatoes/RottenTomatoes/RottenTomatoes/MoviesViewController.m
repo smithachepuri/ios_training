@@ -44,7 +44,8 @@
     
     
     [self.tableView registerNib:[UINib nibWithNibName:@"MovieCell" bundle:nil] forCellReuseIdentifier:@"MovieCell"];
-  
+    [self.tableView registerNib:[UINib nibWithNibName:@"ErrorViewCell" bundle:nil] forCellReuseIdentifier:@"ErrorCell"];
+
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:refreshControl];
@@ -86,7 +87,7 @@
 }
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(self.networkFailure) return 25;
+    if(self.networkFailure) return 60;
     return 125.0;
 }
 
@@ -100,8 +101,10 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if(self.networkFailure) {
-        ErrorViewCell *errorCell = [[ErrorViewCell alloc] init];
-        [errorCell setText:@"Network Error.Please try later"];
+        ErrorViewCell *errorCell =[tableView dequeueReusableCellWithIdentifier:@"ErrorCell"];
+
+        //ErrorViewCell *errorCell = [[ErrorViewCell alloc] init];
+        //[errorCell setText:@"Network Error.Please try later"];
         //errorCell set
         return errorCell;
     }
