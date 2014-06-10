@@ -38,8 +38,6 @@
     [self.movieTitle setText:self.title];
       [self.movieDetails setText:self.details];
     
-      [self.movieTitle setText:self.title];
-    
     NSURL *url = [NSURL URLWithString:self.moviePosterURL];
     
     [self.moviePoster setImageWithURL: url];

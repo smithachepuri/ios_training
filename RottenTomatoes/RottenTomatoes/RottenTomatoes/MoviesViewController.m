@@ -112,9 +112,12 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"testing  ");
     MovieDetailsViewController *mvc = [[MovieDetailsViewController alloc] init];
+    mvc.title = self.movies[indexPath.row][@"title"];
+    mvc.details = self.movies[indexPath.row][@"synopsis"];
+    mvc.moviePosterURL  = self.movies[indexPath.row][@"posters"][@"original"];
     [self.navigationController pushViewController:mvc animated:YES];
+    
 
 }
 
