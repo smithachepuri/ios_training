@@ -118,9 +118,26 @@
    //NSLog(@"IMage thumbnail values %@", movie[@"posters"][@"original"]);
     
     NSURL *url = [NSURL URLWithString:movie[@"posters"][@"thumbnail"]];
-    [cell.posterView setImageWithURL:url];
-
     
+   // [cell.posterView setImageWithURL:url];
+    [cell.posterView setImageWithURLRequest:[NSURLRequest requestWithURL:url] placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        cell.posterView.image =image;
+        cell.posterView.alpha = 0;
+        [UIView beginAnimations:@"fadeIn" context:nil];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [UIView setAnimationDuration:5];
+        
+        cell.posterView.alpha = 1;
+        [UIView commitAnimations];
+
+                
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+        NSLog(@"Unable to get the image and the animation associated");
+    }
+    
+     ];
+
+
     //cell.posterView.image =
     //cell.textLabel.text = movie[@"title"];
     return cell;
