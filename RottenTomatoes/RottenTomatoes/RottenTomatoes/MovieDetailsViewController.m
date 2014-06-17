@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *movieDetails;
 
 @property (weak, nonatomic) IBOutlet UIImageView *moviePoster;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollview;
+@property (strong, nonatomic) IBOutlet UIView *contentView;
 
 @end
 
@@ -52,5 +54,12 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    [self.scrollview layoutIfNeeded];
+    self.scrollview.contentSize = self.contentView.bounds.size;
+}
+
 
 @end
