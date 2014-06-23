@@ -34,24 +34,6 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // You can register for Yelp API keys here: http://www.yelp.com/developers/manage_api_keys
-        self.client = [[YelpClient alloc] initWithConsumerKey:kYelpConsumerKey consumerSecret:kYelpConsumerSecret accessToken:kYelpToken accessSecret:kYelpTokenSecret];
-        
-        [self.client searchWithTerm:@"Thai" success:^(AFHTTPRequestOperation *operation, id response) {
-            //NSLog(@"respo.nse: %@", response);
-           // self.results = [[NSMutableArray alloc] init];
-            
-            self.results = [response[@"businesses"] mutableCopy];
-            
-           NSLog(@"self.results from the initWithNib %@",self.results);
-            
-            //NSLog(@"self.results count from the initWithNib %i",self.results.count);
-            // self.results = response;
-            // NSLog(@"search results  from initwithnibnmae%@", self.results);
-            [self.yelpTableView reloadData ];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"error: %@", [error description]);
-        }];
         
                 self.title = @"Yelp";
     }
@@ -59,11 +41,57 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 }
 
 
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    NSLog(@"the search bar text changed");
+}
+
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+    
+    
+}
+
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(1.0, 0.0, 280.0, 44.0)];
+    searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    searchBar.barTintColor= [UIColor redColor];
+    
+    UIView *searchBarView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 300, 44.0)];
+    searchBarView.autoresizingMask = 0;
+   // searchBar.delegate = self;
+    [searchBarView addSubview:searchBar];
+    self.navigationItem.titleView = searchBarView;
+    
+    
+    
+    
+    // You can register for Yelp API keys here: http://www.yelp.com/developers/manage_api_keys
+    self.client = [[YelpClient alloc] initWithConsumerKey:kYelpConsumerKey consumerSecret:kYelpConsumerSecret accessToken:kYelpToken accessSecret:kYelpTokenSecret];
+    
+    [self.client searchWithTerm:@"Thai" success:^(AFHTTPRequestOperation *operation, id response) {
+        //NSLog(@"respo.nse: %@", response);
+        // self.results = [[NSMutableArray alloc] init];
+        
+        self.results = [response[@"businesses"] mutableCopy];
+        
+        NSLog(@"self.results from the initWithNib %@",self.results);
+        
+        //NSLog(@"self.results count from the initWithNib %i",self.results.count);
+        // self.results = response;
+        // NSLog(@"search results  from initwithnibnmae%@", self.results);
+        [self.yelpTableView reloadData ];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error: %@", [error description]);
+    }];
+
+    
+    
     self.yelpTableView.delegate =self;
     self.yelpTableView.dataSource =self;
     
