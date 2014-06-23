@@ -43,9 +43,9 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
             
             self.results = [response[@"businesses"] mutableCopy];
             
-            NSLog(@"self.results from the initWithNib %@",self.results);
+           NSLog(@"self.results from the initWithNib %@",self.results);
             
-            NSLog(@"self.results count from the initWithNib %i",self.results.count);
+            //NSLog(@"self.results count from the initWithNib %i",self.results.count);
             // self.results = response;
             // NSLog(@"search results  from initwithnibnmae%@", self.results);
             [self.yelpTableView reloadData ];
@@ -78,7 +78,7 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 
 
 -(int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"count of records =%i",self.results.count);
+    //NSLog(@"count of records =%i",self.results.count);
    // return self.results.count;
     return 20;
 }
@@ -95,15 +95,26 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     yelpCell.title.text =searchRes[@"id"];
     NSURL *url = [NSURL URLWithString:searchRes[@"image_url"]];
     [yelpCell.posterImage setImageWithURL:url];
-    //yelpCell.address.text= [searchRes[@"location"][@"address"][0]
-    NSLog(@"neighborhoods %@", searchRes[@"location"][@"neighborhoods"]);
-    yelpCell.address.text= searchRes[@"location"][@"address"][0] ;
+    
+    NSString *address =searchRes[@"location"][@"address"][0];
+    NSArray *nghbrList = searchRes[@"location"][@"neighborhoods"];
+    NSString *nghbrhoods = nghbrList[0];
+    //NSLog(@"nghborhoods %@", nghbrhoods);
+    address = [address stringByAppendingString:@", " ];
+    address = [address stringByAppendingString:nghbrhoods];
+   // NSLog(@"address %@",address);
+    yelpCell.address.text= address;
+    //yelpCell.address.text= searchRes[@"location"][@"address"][0] ;
     NSURL *ratingurl = [NSURL URLWithString:searchRes[@"rating_img_url_small"]];
    [yelpCell.ratingImg setImageWithURL:ratingurl];
-  //  NSLog(@"reviewcount = %@",searchRes[@"review_count"]);
-    //yelpCell.reviewsCount.text = searchRes[@"review_count"];
-    //yelpCell.reviewsCount.text = [ yelpCell.reviewsCount.text stringByAppendingString:@"Reviews"];
+//NSNumber *reviews =searchRes[@"review_count"];
+    //NSLog(@"reviewcount = %i",reviews);
+   yelpCell.reviewsCount.text = [NSString stringWithFormat:@"%@", searchRes[@"review_count"]];
+    yelpCell.reviewsCount.text = [ yelpCell.reviewsCount.text stringByAppendingString:@"Reviews"];
     yelpCell.distance.text =searchRes[@"distance"];
+    NSArray *cateList = searchRes[@"categories"][0];
+   // NSLog(@"categories %@",cateList[0]);
+   yelpCell.cuisine.text =  cateList[0];// [cateList componentsJoinedByString:@" "];
     return yelpCell;
 }
 
