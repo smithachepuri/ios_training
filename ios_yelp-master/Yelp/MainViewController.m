@@ -10,6 +10,7 @@
 #import "YelpClient.h"
 #import "YelpViewCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "FilterViewController.h"
 
 NSString * const kYelpConsumerKey = @"vxKwwcR_NMQ7WaEiQBK_CA";
 NSString * const kYelpConsumerSecret = @"33QCvh5bIF5jIHR5klQr7RtBDhQ";
@@ -54,6 +55,15 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
    // loadSearchResults(searchBar.text);
     
     
+    [self.client searchWithTerm:searchBar.text success:^(AFHTTPRequestOperation *operation, id response) {
+        self.results = [response[@"businesses"] mutableCopy];
+        NSLog(@"self.results from the searchBarSearchButtonclicked %@",self.results);
+        self.results = response;
+        [self.yelpTableView reloadData ];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error: %@", [error description]);
+    }];
+
    
 
 }
@@ -64,58 +74,62 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    //search bar
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(1.0, 0.0, 280.0, 44.0)];
     searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     searchBar.barTintColor= [UIColor redColor];
-    
+ 
     UIView *searchBarView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 300, 44.0)];
     searchBarView.autoresizingMask = 0;
-   searchBar.delegate = self;
+    searchBar.delegate = self;
     [searchBarView addSubview:searchBar];
     self.navigationItem.titleView = searchBarView;
- 
     
+    
+    //delegate and datasource
     self.yelpTableView.delegate =self;
     self.yelpTableView.dataSource =self;
     
     
+    //register the YelpViewCell
     [self.yelpTableView registerNib:[UINib nibWithNibName:@"YelpViewCell" bundle:nil] forCellReuseIdentifier:@"YelpCell"];
     
-   
+    //default search on load
     [self.client searchWithTerm:@"Thai" success:^(AFHTTPRequestOperation *operation, id response) {
-        //NSLog(@"respo.nse: %@", response);
-        // self.results = [[NSMutableArray alloc] init];
-        
         self.results = [response[@"businesses"] mutableCopy];
-        
-        NSLog(@"self.results from the initWithNib %@",self.results);
-        
-        //NSLog(@"self.results count from the initWithNib %i",self.results.count);
-        // self.results = response;
-        // NSLog(@"search results  from initwithnibnmae%@", self.results);
+         NSLog(@"self.results from the initWithNib %@",self.results);
         [self.yelpTableView reloadData ];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error: %@", [error description]);
     }];
-
     
     
     
-    //NSLog(@"inside viewDidLoad and results %@",self.results);
+     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(onSettingsButton)];
+        //self.navigationItem.leftBarButtonItem initWith
     
 }
 
 
 
+- (void)onSettingsButton {
+    [self.navigationController pushViewController:[[FilterViewController alloc] init] animated:YES];
+}
+
+
+
+
 -(int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    //NSLog(@"count of records =%i",self.results.count);
-   // return self.results.count;
-    return 20;
+    NSLog(@"count of records =%i",self.results.count);
+   return self.results.count;
+   // return 20;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     YelpViewCell *yelpCell =[tableView dequeueReusableCellWithIdentifier:@"YelpCell"];
+    NSLog(@"results indexPath %i", indexPath.row);
     NSDictionary *searchRes = self.results[indexPath.row] ;
     NSString *id =searchRes[@"id"];
     yelpCell.title.text = [id capitalizedString];
