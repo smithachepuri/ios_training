@@ -91,8 +91,13 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
  // NSLog(@"search results from inside cellForRowatindexPath = %@",self.results);
      NSDictionary *searchRes = self.results[indexPath.row] ;
         //NSLog(@"searchResult for the given row %@",searchRes[@"id"]);
+   // NSString *title =[NSString stringWithFormat:@"%i", indexPath.row];
+   //  NSString *title = [[NSString alloc] initWithFormat:@"%d", indexPath.row];
+     NSString *id =searchRes[@"id"];
+    //title = [ stringByAppendingString: id];
+    yelpCell.title.text = [id capitalizedString];
     
-    yelpCell.title.text =searchRes[@"id"];
+    
     NSURL *url = [NSURL URLWithString:searchRes[@"image_url"]];
     [yelpCell.posterImage setImageWithURL:url];
     
