@@ -22,7 +22,7 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 
 @property (strong, nonatomic) IBOutlet UITableView *yelpTableView;
 
-@property (strong, nonatomic) NSMutableAttributedString *results;
+@property (strong, nonatomic) NSMutableArray *results;
 
 
 
@@ -41,11 +41,14 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
             //NSLog(@"respo.nse: %@", response);
            // self.results = [[NSMutableArray alloc] init];
             
-            self.results = [response mutableCopy];
+            self.results = [response[@"businesses"] mutableCopy];
             
             NSLog(@"self.results from the initWithNib %@",self.results);
+            
+            NSLog(@"self.results count from the initWithNib %i",self.results.count);
             // self.results = response;
             // NSLog(@"search results  from initwithnibnmae%@", self.results);
+            [self.yelpTableView reloadData ];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"error: %@", [error description]);
         }];
@@ -64,18 +67,18 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     self.yelpTableView.delegate =self;
     self.yelpTableView.dataSource =self;
     
-    [self.yelpTableView reloadData ];
+    
     [self.yelpTableView registerNib:[UINib nibWithNibName:@"YelpViewCell" bundle:nil] forCellReuseIdentifier:@"YelpCell"];
     
     
-    NSLog(@"inside viewDidLoad and results %@",self.results);
+    //NSLog(@"inside viewDidLoad and results %@",self.results);
     
 }
 
 
 
 -(int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    //NSLog(@"count of records =%i",self.results.count);
+    NSLog(@"count of records =%i",self.results.count);
    // return self.results.count;
     return 20;
 }
@@ -86,14 +89,21 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
    // NSLog(@"cell For RowAt Index path :%d", indexPath.row);
     
  // NSLog(@"search results from inside cellForRowatindexPath = %@",self.results);
-     //  NSDictionary *searchRes = self.results[indexPath.row] ;
-   // NSLog(@"searchResult for the given row %@",searchRes);
-    //yelpCell.title.text =searchRes[@"businesses"][@"id"];
-    //NSLog(@"title Text @",yelpCell.title.text);
-   //NSURL *url = [NSURL URLWithString:searchRes[@"image_url"]];
+     NSDictionary *searchRes = self.results[indexPath.row] ;
+        //NSLog(@"searchResult for the given row %@",searchRes[@"id"]);
     
-  // [yelpCell.posterImage setImageWithURL:url];
-   
+    yelpCell.title.text =searchRes[@"id"];
+    NSURL *url = [NSURL URLWithString:searchRes[@"image_url"]];
+    [yelpCell.posterImage setImageWithURL:url];
+    //yelpCell.address.text= [searchRes[@"location"][@"address"][0]
+    NSLog(@"neighborhoods %@", searchRes[@"location"][@"neighborhoods"]);
+    yelpCell.address.text= searchRes[@"location"][@"address"][0] ;
+    NSURL *ratingurl = [NSURL URLWithString:searchRes[@"rating_img_url_small"]];
+   [yelpCell.ratingImg setImageWithURL:ratingurl];
+  //  NSLog(@"reviewcount = %@",searchRes[@"review_count"]);
+    //yelpCell.reviewsCount.text = searchRes[@"review_count"];
+    //yelpCell.reviewsCount.text = [ yelpCell.reviewsCount.text stringByAppendingString:@"Reviews"];
+    yelpCell.distance.text =searchRes[@"distance"];
     return yelpCell;
 }
 
