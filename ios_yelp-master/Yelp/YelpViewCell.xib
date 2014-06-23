@@ -6,15 +6,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="77" id="KGk-i7-Jjw" customClass="YelpViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="353" height="77"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="71" id="KGk-i7-Jjw" customClass="YelpViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="334" height="71"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="353" height="76"/>
+                <rect key="frame" x="0.0" y="0.0" width="334" height="70"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eBE-Sg-wrm">
-                        <rect key="frame" x="20" y="3" width="51" height="68"/>
+                        <rect key="frame" x="20" y="3" width="51" height="62"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="125" translatesAutoresizingMaskIntoConstraints="NO" id="R2H-Mj-BJ7">
@@ -38,7 +38,7 @@
                         <rect key="frame" x="79" y="14" width="41" height="11"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6d-ml-enT">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6d-ml-enT">
                         <rect key="frame" x="208" y="46" width="42" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -57,9 +57,6 @@
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="42" translatesAutoresizingMaskIntoConstraints="NO" id="TVn-BL-INs">
                         <rect key="frame" x="216" y="18" width="42" height="9"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="12" id="75D-fj-PIh"/>
-                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -89,9 +86,7 @@
                     <constraint firstItem="nVK-rt-eB7" firstAttribute="top" secondItem="HSS-Gi-PlF" secondAttribute="top" id="Ep2-Go-Xer"/>
                     <constraint firstItem="jJf-Bj-UE4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="FLp-v4-g8s"/>
                     <constraint firstItem="nVK-rt-eB7" firstAttribute="bottom" secondItem="HSS-Gi-PlF" secondAttribute="bottom" id="LNL-ej-kIS"/>
-                    <constraint firstItem="TVn-BL-INs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="Lrv-Dp-abz"/>
                     <constraint firstAttribute="bottom" secondItem="eBE-Sg-wrm" secondAttribute="bottom" constant="5" id="NW0-Qu-TYY"/>
-                    <constraint firstAttribute="trailing" secondItem="jJf-Bj-UE4" secondAttribute="trailing" constant="95" id="Q0D-bs-OAI"/>
                     <constraint firstItem="TVn-BL-INs" firstAttribute="trailing" secondItem="jJf-Bj-UE4" secondAttribute="trailing" id="Qnf-O4-rRY"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="V46-Pm-Yna" secondAttribute="bottom" constant="10" id="TLd-LV-ftN"/>
                     <constraint firstItem="nVK-rt-eB7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="WgE-yt-y68"/>
@@ -99,9 +94,8 @@
                     <constraint firstItem="R2H-Mj-BJ7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="79" id="dtz-Uz-XEj"/>
                     <constraint firstItem="V46-Pm-Yna" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="79" id="dvK-ET-L38"/>
                     <constraint firstItem="V46-Pm-Yna" firstAttribute="top" secondItem="R2H-Mj-BJ7" secondAttribute="bottom" constant="6" id="fu6-hz-VVe"/>
-                    <constraint firstItem="u6d-ml-enT" firstAttribute="top" secondItem="TVn-BL-INs" secondAttribute="bottom" constant="19" id="hEs-Ph-QW9"/>
                     <constraint firstItem="R2H-Mj-BJ7" firstAttribute="leading" secondItem="HSS-Gi-PlF" secondAttribute="leading" id="jIC-FO-kCc"/>
-                    <constraint firstAttribute="trailing" secondItem="TVn-BL-INs" secondAttribute="trailing" constant="95" id="k6z-qL-783"/>
+                    <constraint firstAttribute="trailing" secondItem="TVn-BL-INs" secondAttribute="trailing" constant="75" id="k6z-qL-783"/>
                     <constraint firstItem="eBE-Sg-wrm" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" symbolic="YES" id="rwJ-YT-wre"/>
                     <constraint firstItem="R2H-Mj-BJ7" firstAttribute="leading" secondItem="V46-Pm-Yna" secondAttribute="leading" id="tWb-p4-jQC"/>
                 </constraints>

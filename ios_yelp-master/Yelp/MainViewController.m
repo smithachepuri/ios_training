@@ -34,24 +34,30 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        // You can register for Yelp API keys here: http://www.yelp.com/developers/manage_api_keys
+        self.client = [[YelpClient alloc] initWithConsumerKey:kYelpConsumerKey consumerSecret:kYelpConsumerSecret accessToken:kYelpToken accessSecret:kYelpTokenSecret];
         
-                self.title = @"Yelp";
     }
     return self;
 }
 
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    NSLog(@"the search bar text changed");
+    //NSLog(@"the search bar text changed");
 }
 
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
+    NSLog(@"Search bar entered %@",searchBar.text);
+   // loadSearchResults(searchBar.text);
     
     
+   
+
 }
+
 
 
 
@@ -64,16 +70,18 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     
     UIView *searchBarView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 300, 44.0)];
     searchBarView.autoresizingMask = 0;
-   // searchBar.delegate = self;
+   searchBar.delegate = self;
     [searchBarView addSubview:searchBar];
     self.navigationItem.titleView = searchBarView;
+ 
+    
+    self.yelpTableView.delegate =self;
+    self.yelpTableView.dataSource =self;
     
     
+    [self.yelpTableView registerNib:[UINib nibWithNibName:@"YelpViewCell" bundle:nil] forCellReuseIdentifier:@"YelpCell"];
     
-    
-    // You can register for Yelp API keys here: http://www.yelp.com/developers/manage_api_keys
-    self.client = [[YelpClient alloc] initWithConsumerKey:kYelpConsumerKey consumerSecret:kYelpConsumerSecret accessToken:kYelpToken accessSecret:kYelpTokenSecret];
-    
+   
     [self.client searchWithTerm:@"Thai" success:^(AFHTTPRequestOperation *operation, id response) {
         //NSLog(@"respo.nse: %@", response);
         // self.results = [[NSMutableArray alloc] init];
@@ -92,12 +100,6 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 
     
     
-    self.yelpTableView.delegate =self;
-    self.yelpTableView.dataSource =self;
-    
-    
-    [self.yelpTableView registerNib:[UINib nibWithNibName:@"YelpViewCell" bundle:nil] forCellReuseIdentifier:@"YelpCell"];
-    
     
     //NSLog(@"inside viewDidLoad and results %@",self.results);
     
@@ -114,39 +116,23 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     YelpViewCell *yelpCell =[tableView dequeueReusableCellWithIdentifier:@"YelpCell"];
-   // NSLog(@"cell For RowAt Index path :%d", indexPath.row);
-    
- // NSLog(@"search results from inside cellForRowatindexPath = %@",self.results);
-     NSDictionary *searchRes = self.results[indexPath.row] ;
-        //NSLog(@"searchResult for the given row %@",searchRes[@"id"]);
-   // NSString *title =[NSString stringWithFormat:@"%i", indexPath.row];
-   //  NSString *title = [[NSString alloc] initWithFormat:@"%d", indexPath.row];
-     NSString *id =searchRes[@"id"];
-    //title = [ stringByAppendingString: id];
+    NSDictionary *searchRes = self.results[indexPath.row] ;
+    NSString *id =searchRes[@"id"];
     yelpCell.title.text = [id capitalizedString];
-    
-    
     NSURL *url = [NSURL URLWithString:searchRes[@"image_url"]];
     [yelpCell.posterImage setImageWithURL:url];
-    
     NSString *address =searchRes[@"location"][@"address"][0];
     NSArray *nghbrList = searchRes[@"location"][@"neighborhoods"];
     NSString *nghbrhoods = nghbrList[0];
-    //NSLog(@"nghborhoods %@", nghbrhoods);
     address = [address stringByAppendingString:@", " ];
     address = [address stringByAppendingString:nghbrhoods];
-   // NSLog(@"address %@",address);
     yelpCell.address.text= address;
-    //yelpCell.address.text= searchRes[@"location"][@"address"][0] ;
     NSURL *ratingurl = [NSURL URLWithString:searchRes[@"rating_img_url_small"]];
    [yelpCell.ratingImg setImageWithURL:ratingurl];
-//NSNumber *reviews =searchRes[@"review_count"];
-    //NSLog(@"reviewcount = %i",reviews);
    yelpCell.reviewsCount.text = [NSString stringWithFormat:@"%@", searchRes[@"review_count"]];
     yelpCell.reviewsCount.text = [ yelpCell.reviewsCount.text stringByAppendingString:@" Reviews"];
     yelpCell.distance.text =searchRes[@"distance"];
     NSArray *cateList = searchRes[@"categories"][0];
-   // NSLog(@"categories %@",cateList[0]);
    yelpCell.cuisine.text =  cateList[0];// [cateList componentsJoinedByString:@" "];
     return yelpCell;
 }
