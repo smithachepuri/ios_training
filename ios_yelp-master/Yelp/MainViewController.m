@@ -52,27 +52,22 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 {
     [searchBar resignFirstResponder];
     NSLog(@"Search bar entered %@",searchBar.text);
-   // loadSearchResults(searchBar.text);
-    
-    
-    [self.client searchWithTerm:searchBar.text success:^(AFHTTPRequestOperation *operation, id response) {
+    [self loadSearchResults:searchBar.text];
+}
+
+-(void) loadSearchResults:(NSString *)searchTerm {
+    //default search on load
+    [self.client searchWithTerm:searchTerm success:^(AFHTTPRequestOperation *operation, id response) {
         self.results = [response[@"businesses"] mutableCopy];
-        NSLog(@"self.results from the searchBarSearchButtonclicked %@",self.results);
-        self.results = response;
+        NSLog(@"self.results from the initWithNib %@",self.results);
         [self.yelpTableView reloadData ];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error: %@", [error description]);
     }];
-
-   
-
 }
 
 
-
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 
     //search bar
@@ -95,25 +90,16 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     //register the YelpViewCell
     [self.yelpTableView registerNib:[UINib nibWithNibName:@"YelpViewCell" bundle:nil] forCellReuseIdentifier:@"YelpCell"];
     
-    //default search on load
-    [self.client searchWithTerm:@"Thai" success:^(AFHTTPRequestOperation *operation, id response) {
-        self.results = [response[@"businesses"] mutableCopy];
-         NSLog(@"self.results from the initWithNib %@",self.results);
-        [self.yelpTableView reloadData ];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"error: %@", [error description]);
-    }];
+    [self loadSearchResults:@"Asian"];
     
-    
-    
-     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(onSettingsButton)];
+     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(onFilterButton)];
         //self.navigationItem.leftBarButtonItem initWith
     
 }
 
 
 
-- (void)onSettingsButton {
+- (void)onFilterButton {
     [self.navigationController pushViewController:[[FilterViewController alloc] init] animated:YES];
 }
 
