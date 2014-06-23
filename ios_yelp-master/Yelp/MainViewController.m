@@ -115,7 +115,7 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 //NSNumber *reviews =searchRes[@"review_count"];
     //NSLog(@"reviewcount = %i",reviews);
    yelpCell.reviewsCount.text = [NSString stringWithFormat:@"%@", searchRes[@"review_count"]];
-    yelpCell.reviewsCount.text = [ yelpCell.reviewsCount.text stringByAppendingString:@"Reviews"];
+    yelpCell.reviewsCount.text = [ yelpCell.reviewsCount.text stringByAppendingString:@" Reviews"];
     yelpCell.distance.text =searchRes[@"distance"];
     NSArray *cateList = searchRes[@"categories"][0];
    // NSLog(@"categories %@",cateList[0]);
