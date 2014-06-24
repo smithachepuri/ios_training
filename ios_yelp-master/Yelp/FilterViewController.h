@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FilterOptions.h"
+
+@protocol FilterViewControllerDelegate <NSObject>
+- (void)searchWithFilterOption:(FilterOptions *)fiterOption;
+@end
 
 @interface FilterViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *cancel;
 @property (strong, nonatomic) IBOutlet UIButton *search;
+@property (weak, nonatomic) id<FilterViewControllerDelegate> delegate;
 
 @end

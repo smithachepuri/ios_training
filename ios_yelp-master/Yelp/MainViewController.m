@@ -168,4 +168,10 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     // Dispose of any resources that can be recreated.
 }
 
+-(void) searchWithFilterOption:(FilterOptions *)filterOption {
+   // filterOption.isDealAvailable
+    NSLog(@"this method is called from Mainview");
+    
+}
+
 @end
