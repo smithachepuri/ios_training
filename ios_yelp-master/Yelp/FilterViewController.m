@@ -49,8 +49,9 @@
     
    // self.sectionTitles = [[self.filters allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     self.sectionTitles = [self.filters allKeys];
+    NSLog(@"section titles %@" , self.sectionTitles);
     NSLog(@"count of filters %i",self.sectionTitles.count);
-   // [self.filterTableView reloadData];
+   [self.filterTableView reloadData];
 }
 
 
@@ -63,13 +64,15 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    NSLog(@"titles.count %@",self.sectionTitles.count);
-    return [self.sectionTitles count];
+    NSLog(@"titles.count %i",self.sectionTitles.count);
+   // return [self.sectionTitles count];
+    return 20;
 }
 
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
+    NSLog(@"testing ");
     return [self.sectionTitles objectAtIndex:section];
 }
 
@@ -84,10 +87,11 @@
      //return 20;
 }
 
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
-    FilterViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"YelpCell"];
+    FilterViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"FilterCell"];
     
     // Configure the cell...
     NSString *sectionTitle = [self.sectionTitles objectAtIndex:indexPath.section];
@@ -100,6 +104,7 @@
     
     return cell;
 }
+
 
 
 
