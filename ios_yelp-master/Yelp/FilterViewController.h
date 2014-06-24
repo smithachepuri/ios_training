@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FilterViewController : UIViewController
+@interface FilterViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@property (strong, nonatomic) IBOutlet UIButton *cancel;
+@property (strong, nonatomic) IBOutlet UIButton *search;
 
 @end

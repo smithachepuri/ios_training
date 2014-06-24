@@ -37,14 +37,13 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     if (self) {
         // You can register for Yelp API keys here: http://www.yelp.com/developers/manage_api_keys
         self.client = [[YelpClient alloc] initWithConsumerKey:kYelpConsumerKey consumerSecret:kYelpConsumerSecret accessToken:kYelpToken accessSecret:kYelpTokenSecret];
-        
     }
     return self;
 }
 
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    //NSLog(@"the search bar text changed");
+    NSLog(@"the search bar text changed");
 }
 
 
@@ -71,15 +70,35 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     [super viewDidLoad];
 
     //search bar
-    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(1.0, 0.0, 280.0, 44.0)];
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(1.0, 0.0, 300.0, 44.0)];
     searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     searchBar.barTintColor= [UIColor redColor];
  
-    UIView *searchBarView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 300, 44.0)];
+    UIView *searchBarView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320, 44.0)];
     searchBarView.autoresizingMask = 0;
     searchBar.delegate = self;
     [searchBarView addSubview:searchBar];
     self.navigationItem.titleView = searchBarView;
+    
+    
+    //Filter Button
+    /*
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button addTarget:self
+               action:@selector(aMethod:)
+     forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"Filter" forState:UIControlStateNormal];
+    button.frame = CGRectMake(1.0, 10.0, 100.0, 44.0);
+    [self.yelpTableView addSubview:button];
+    
+    
+    UIBarButtonItem *flipButton = [[UIBarButtonItem alloc]
+                                   initWithTitle:@"Filter"
+                                   style:UIBarButtonItemStyleBordered
+                                   target:self
+                                   action:@selector(flipView)];
+    self.navigationItem.leftBarButtonItem = flipButton;
+   */
     
     
     //delegate and datasource
@@ -97,13 +116,9 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     
 }
 
-
-
 - (void)onFilterButton {
     [self.navigationController pushViewController:[[FilterViewController alloc] init] animated:YES];
 }
-
-
 
 
 -(int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -131,12 +146,20 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
    [yelpCell.ratingImg setImageWithURL:ratingurl];
    yelpCell.reviewsCount.text = [NSString stringWithFormat:@"%@", searchRes[@"review_count"]];
     yelpCell.reviewsCount.text = [ yelpCell.reviewsCount.text stringByAppendingString:@" Reviews"];
-    yelpCell.distance.text =searchRes[@"distance"];
+    yelpCell.distance.text = @"0.0";   //searchRes[@"distance"];
+    yelpCell.price.text = @"$$";
     NSArray *cateList = searchRes[@"categories"][0];
    yelpCell.cuisine.text =  cateList[0];// [cateList componentsJoinedByString:@" "];
     return yelpCell;
 }
 
+
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return  100;
+}
 
 
 - (void)didReceiveMemoryWarning

@@ -25,6 +25,8 @@
 		63E591F41F684901AF8C1C19 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DEC6D18C14F46F8AF2EA320 /* libPods.a */; };
 		CA41B2671958E037005C2B64 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA41B2651958E037005C2B64 /* FilterViewController.m */; };
 		CA41B2681958E037005C2B64 /* FilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA41B2661958E037005C2B64 /* FilterViewController.xib */; };
+		CA41B2711958F231005C2B64 /* FilterViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA41B26F1958F231005C2B64 /* FilterViewCell.m */; };
+		CA41B2721958F231005C2B64 /* FilterViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA41B2701958F231005C2B64 /* FilterViewCell.xib */; };
 		CAD7D25719565052008BFE26 /* YelpViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD7D25519565052008BFE26 /* YelpViewCell.m */; };
 		CAD7D25819565052008BFE26 /* YelpViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD7D25619565052008BFE26 /* YelpViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -66,6 +68,9 @@
 		CA41B2641958E037005C2B64 /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
 		CA41B2651958E037005C2B64 /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
 		CA41B2661958E037005C2B64 /* FilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
+		CA41B26E1958F231005C2B64 /* FilterViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewCell.h; sourceTree = "<group>"; };
+		CA41B26F1958F231005C2B64 /* FilterViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewCell.m; sourceTree = "<group>"; };
+		CA41B2701958F231005C2B64 /* FilterViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterViewCell.xib; sourceTree = "<group>"; };
 		CAD7D25419565052008BFE26 /* YelpViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpViewCell.h; sourceTree = "<group>"; };
 		CAD7D25519565052008BFE26 /* YelpViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpViewCell.m; sourceTree = "<group>"; };
 		CAD7D25619565052008BFE26 /* YelpViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YelpViewCell.xib; sourceTree = "<group>"; };
@@ -117,6 +122,9 @@
 				CA41B2641958E037005C2B64 /* FilterViewController.h */,
 				CA41B2651958E037005C2B64 /* FilterViewController.m */,
 				CA41B2661958E037005C2B64 /* FilterViewController.xib */,
+				CA41B26E1958F231005C2B64 /* FilterViewCell.h */,
+				CA41B26F1958F231005C2B64 /* FilterViewCell.m */,
+				CA41B2701958F231005C2B64 /* FilterViewCell.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -272,6 +280,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA41B2721958F231005C2B64 /* FilterViewCell.xib in Resources */,
 				CA41B2681958E037005C2B64 /* FilterViewController.xib in Resources */,
 				42FD6C5518DC286B000BF2B9 /* InfoPlist.strings in Resources */,
 				420474FC18DC2B2100E88E07 /* MainViewController.xib in Resources */,
@@ -334,6 +343,7 @@
 				420474F618DC299500E88E07 /* YelpClient.m in Sources */,
 				CA41B2671958E037005C2B64 /* FilterViewController.m in Sources */,
 				420474FB18DC2B2100E88E07 /* MainViewController.m in Sources */,
+				CA41B2711958F231005C2B64 /* FilterViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
