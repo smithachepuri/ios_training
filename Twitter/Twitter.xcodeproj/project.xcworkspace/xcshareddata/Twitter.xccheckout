@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>649BA178-239D-42BC-B9DF-149B8E2DDAE6</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Twitter</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>503D07E1-C36F-478D-9631-8437A0946254</key>
+		<string>https://github.com/smithachepuri/ios_training</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Twitter/Twitter.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>503D07E1-C36F-478D-9631-8437A0946254</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/smithachepuri/ios_training</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>503D07E1-C36F-478D-9631-8437A0946254</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>503D07E1-C36F-478D-9631-8437A0946254</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ios_training</string>
+		</dict>
+	</array>
+</dict>
+</plist>
