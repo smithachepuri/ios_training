@@ -15,6 +15,7 @@
 
 -(void)login;
 
--(AFHTTPRequestOperation *)homeTimeline;
+-(AFHTTPRequestOperation *)homeTimelineWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                                           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
 @end

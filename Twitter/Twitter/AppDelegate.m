@@ -97,6 +97,11 @@
                 success:^(BDBOAuthToken *accessToken) {
                     NSLog(@"Got the access token");
                     [client.requestSerializer saveAccessToken:accessToken];
+                    [client homeTimelineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                        NSLog(@"Successfully retrieved the tweets array %@ response object ", responseObject);
+                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                        NSLog(@"Error getting the tweets array");
+                    }];
                 }
                 failure:^(NSError *error) {
                     NSLog(@"COuld not get the access token");
