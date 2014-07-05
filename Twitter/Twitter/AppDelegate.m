@@ -9,10 +9,28 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "TwitterClient.h"
+#import "Tweet.h"
+#import "TweetsViewController.h"
+#import "User.h"
+
+
+
+@interface AppDelegate ()
+
+- (void)updateRootVC;
+
+@property (nonatomic, strong) LoginViewController *loginVC;
+@property (nonatomic, strong) TweetsViewController *tweetsVC;
+@property (nonatomic, strong) UIViewController *currentVC;
+
+@end
+
+
 
 
 
 @implementation NSURL (dictionaryFromQueryString)
+
 
 - (NSDictionary *)dictionaryFromQueryString
 {
@@ -41,11 +59,17 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.rootViewController = [[LoginViewController alloc] init];
+    //self.window.rootViewController = [[LoginViewController alloc] init];
     
+   [User setCurrentUser: nil];
+     self.window.rootViewController = [self currentVC ];
+    NSLog(@"the rootViewController %@", [self currentVC]);
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateRootVC) name:UserDidLoginNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateRootVC) name:UserDidLogoutNotification object:nil];
     
     self.window.backgroundColor = [UIColor whiteColor];
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -98,7 +122,17 @@
                     NSLog(@"Got the access token");
                     [client.requestSerializer saveAccessToken:accessToken];
                     [client homeTimelineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-                        NSLog(@"Successfully retrieved the tweets array %@ response object ", responseObject);
+                       // NSLog(@"Successfully retrieved the tweets array: response object %@  ", responseObject);
+                         NSLog(@"Successfully retrieved the tweets array: response object");
+                      // self.tweets = [Tweet tweetsWithArray:responseObject];
+                        //NSLog(@"tweets array = %@",self.tweets[0][@"created_at"]);
+                        NSLog(@"count of tweets in the response %i",[responseObject count]);
+                       [User setCurrentUser:[[User alloc] initWithDictionary:responseObject]];
+                        //TweetsViewController *tvc = [[TweetsViewController alloc] init];
+                       // [[UINavigationController alloc] initWithRootViewController:tvc];
+                        // [self.navigationController pushViewController:tvc animated:YES];
+                        //self.window rootViewController = [[TweetsViewController alloc] init];
+                        
                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                         NSLog(@"Error getting the tweets array");
                     }];
@@ -113,5 +147,45 @@
     }
     return NO;
     }
+
+- (UIViewController *)currentVC {
+    NSLog(@"inside User and curentUser ");
+    if([User currentUser] != nil) {
+       return self.setTweetsVC;
+        
+    }else {
+        return self.setLoginVC;
+    }
+}
+
+- (TweetsViewController *)setTweetsVC {
+    NSLog(@"Inside the twwetsVC instance %@",self.tweetsVC);
+    if (!self.tweetsVC) {
+         self.tweetsVC = [[TweetsViewController alloc] init];
+    }
+    NSLog(@"after initializing tweets COntrooler %@",self.tweetsVC);
+    
+    return self.tweetsVC;
+}
+
+- (LoginViewController *)setLoginVC {
+    NSLog(@"Inside the twwetsVC instance %@",self.loginVC);
+    if (!self.loginVC) {
+        self.loginVC = [[LoginViewController alloc] init];
+    }
+    
+    return self.loginVC;
+}
+
+- (void)updateRootVC {
+    NSLog(@"currentVC %@", self.currentVC);
+    NSLog(@"self.window.rootViewController %@", self.window.rootViewController);
+    self.window.rootViewController = self.currentVC;
+   // self.window.rootViewController = [[TweetsViewController alloc] init];
+}
+
+
+
+
 @end;
 

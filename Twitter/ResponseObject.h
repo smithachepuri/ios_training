@@ -10,4 +10,15 @@
 
 @interface ResponseObject : NSObject
 
+- (id)initWithDictionary:(NSDictionary *)data;
+
+@property (nonatomic, strong) NSDictionary *data;
+
+@end
+
+@interface ResponseObject (ForwardedMethods)
+
+- (id)objectForKey:(id)key;
+- (id)valueOrNilForKeyPath:(NSString *)keyPath;
+
 @end

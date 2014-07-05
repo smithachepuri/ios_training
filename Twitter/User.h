@@ -11,6 +11,11 @@
 
 @interface User : ResponseObject
 
+extern NSString *const UserDidLoginNotification;
+extern NSString *const UserDidLogoutNotification;
+
+
+
 
 +(User *) currentUser;
 + (void)setCurrentUser:(User *) user;

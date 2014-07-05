@@ -7,8 +7,16 @@
 //
 
 #import "TweetsViewController.h"
+#import "Tweet.h"
+#import "User.h"
+#import "TwitterClient.h"
 
 @interface TweetsViewController ()
+
+@property (nonatomic, strong) NSMutableArray *tweets;
+
+- (void)onSignOutButton;
+- (void)reload;
 
 @end
 
@@ -23,11 +31,64 @@
     return self;
 }
 
+
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    if (self) {
+        self.title = @"Twitter";
+        
+        [self reload];
+    }
+    return self;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(onSignOutButton)];
+    
+
 }
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.tweets.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    
+    Tweet *tweet = self.tweets[indexPath.row];
+    cell.textLabel.text = tweet.text;
+    
+    return cell;
+}
+
+
+- (void)onSignOutButton {
+    [User setCurrentUser:nil];
+}
+
+- (void)reload {
+    [[TwitterClient instance] homeTimelineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+       // NSLog(@"response object %@", responseObject);
+        self.tweets = [Tweet tweetsWithArray:responseObject];
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error when getting the response %@",[error description]);
+    }];
+    
+    
+  }
+
+
 
 - (void)didReceiveMemoryWarning
 {

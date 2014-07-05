@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "TwitterClient.h"
+#import "User.h"
 
 @interface LoginViewController ()
 - (IBAction)onSignIn:(id)sender;
@@ -16,12 +17,17 @@
 
 @implementation LoginViewController
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.title = @"Twitter";
+        NSLog(@"Inside initiwitNibName");
     }
+    
+    [self reload];
     return self;
 }
 
@@ -39,5 +45,16 @@
 
 - (IBAction)onSignIn:(id)sender {
     [[TwitterClient instance] login];
+    NSLog(@"Inside the onSIgn In method ned to call reload");
+   
+    
+}
+
+
+-(void)reload {
+    
+    
+    
+    
 }
 @end

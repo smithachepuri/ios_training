@@ -17,7 +17,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance
-        = [[TwitterClient alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.twitter.com"] consumerKey:@"WcznQ00KKfQtx6zvvUVyD4Tgg" consumerSecret:@""];
+        = [[TwitterClient alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.twitter.com"] consumerKey:@"WcznQ00KKfQtx6zvvUVyD4Tgg" consumerSecret:@"ul7ipGrxyiFhuOsfevH6sttVQlqJFiibw6QyOPVHh8Zs3famj8"];
     });
     
     return instance;
