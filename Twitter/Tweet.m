@@ -11,9 +11,6 @@
 @implementation Tweet
 
 
-- (NSString *)text {
-    return @"Test tweet";
-}
 
 + (NSMutableArray *)tweetsWithArray:(NSArray *)array {
     
@@ -22,6 +19,14 @@
         [tweets addObject:[[Tweet alloc] initWithDictionary:params]];
     }
     return tweets;
+    
+}
+
+- (Tweet) initTweetsData: (NSArray *)tweetsArray {
+    if (tweetsArray !=nil) {
+        
+        
+    }
     
 }
 

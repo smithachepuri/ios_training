@@ -14,11 +14,7 @@
 
 @property (nonatomic, strong) NSDictionary *data;
 
-@end
 
-@interface ResponseObject (ForwardedMethods)
-
-- (id)objectForKey:(id)key;
-- (id)valueOrNilForKeyPath:(NSString *)keyPath;
+@property (nonatomic,strong) NSString* userImage;
 
 @end

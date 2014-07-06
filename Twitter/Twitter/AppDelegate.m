@@ -20,7 +20,7 @@
 - (void)updateRootVC;
 
 @property (nonatomic, strong) LoginViewController *loginVC;
-@property (nonatomic, strong) TweetsViewController *tweetsVC;
+@property (nonatomic, strong) UIViewController *tweetsVC;
 @property (nonatomic, strong) UIViewController *currentVC;
 
 @end
@@ -62,8 +62,9 @@
     //self.window.rootViewController = [[LoginViewController alloc] init];
     
    [User setCurrentUser: nil];
+    NSLog(@"before getting the view controoler: rootViewController %@" ,[self.window rootViewController]);
      self.window.rootViewController = [self currentVC ];
-    NSLog(@"the rootViewController %@", [self currentVC]);
+    NSLog(@"after setting to the current VC rootViewController %@", [self.window rootViewController]);
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateRootVC) name:UserDidLoginNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateRootVC) name:UserDidLogoutNotification object:nil];
@@ -149,11 +150,13 @@
     }
 
 - (UIViewController *)currentVC {
-    NSLog(@"inside User and curentUser ");
-    if([User currentUser] != nil) {
+    User *curUser = [User currentUser];
+    NSLog(@"inside User and curentUser %@ ", curUser);
+    if(curUser !=nil) {
        return self.setTweetsVC;
         
     }else {
+        NSLog(@"setting the currentVC to loginvc");
         return self.setLoginVC;
     }
 }
@@ -179,9 +182,7 @@
 
 - (void)updateRootVC {
     NSLog(@"currentVC %@", self.currentVC);
-    NSLog(@"self.window.rootViewController %@", self.window.rootViewController);
     self.window.rootViewController = self.currentVC;
-   // self.window.rootViewController = [[TweetsViewController alloc] init];
 }
 
 

@@ -14,6 +14,7 @@
 @interface TweetsViewController ()
 
 @property (nonatomic, strong) NSMutableArray *tweets;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 - (void)onSignOutButton;
 - (void)reload;
@@ -32,24 +33,19 @@
 }
 
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        self.title = @"Twitter";
-        
-        [self reload];
-    }
-    return self;
-}
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(onSignOutButton)];
     
+    [self reload];
 
 }
 
@@ -78,7 +74,7 @@
 
 - (void)reload {
     [[TwitterClient instance] homeTimelineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-       // NSLog(@"response object %@", responseObject);
+       NSLog(@"response object %@", responseObject);
         self.tweets = [Tweet tweetsWithArray:responseObject];
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
