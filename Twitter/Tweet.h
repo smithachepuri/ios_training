@@ -17,6 +17,9 @@
 
 @property (nonatomic,strong, readonly) NSString *retweeted;
 
+@property (strong, nonatomic) NSString  *screenName;
+@property (strong, nonatomic) NSString  *twitterId;
+@property (strong, nonatomic) NSString  *tweetText;
 
 
 @end

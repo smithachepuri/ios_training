@@ -22,13 +22,6 @@
     
 }
 
-- (Tweet) initTweetsData: (NSArray *)tweetsArray {
-    if (tweetsArray !=nil) {
-        
-        
-    }
-    
-}
 
 
 
