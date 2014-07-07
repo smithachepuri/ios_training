@@ -54,7 +54,6 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"TweetsCell" bundle:nil] forCellReuseIdentifier:@"TweetsCell"];
     
-    
     UINavigationBar *headerView = [[UINavigationBar alloc] initWithFrame:CGRectMake(0,0,320,74)];
     UINavigationItem *buttonCarrier = [[UINavigationItem alloc]initWithTitle:@"Sign Out"];
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStyleDone target:self action:@selector(filter)];
@@ -71,12 +70,10 @@
     
    // self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(onSignOutButton)];
     
-    
+    NSLog(@"self.navigationContro %@",self.navigationController);
     [self reload];
 
 }
-
-
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -101,26 +98,20 @@
     return 100.0;
 }
 
-
-
-
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     NSLog(@"Inside didselectrow %@", self.tweets[indexPath.row][@"text"]);
      NSLog(@"Inside didselectrow %@", self.tweets[indexPath.row][@"user"][@"screen_name"]);
-    TweetDetailViewController *detailvc = [[TweetDetailViewController alloc] init];
+    //TweetDetailViewController *detailvc = [[TweetDetailViewController alloc] init];
+    TweetDetailViewController *detailvc = [[TweetDetailViewController alloc] initWithNibName:@"TweetDetailViewController" bundle:nil];
     NSDictionary *tweetsDic = self.tweets[indexPath.row] ;
     detailvc.screenName = tweetsDic[@"user"] [@"screen_name"];
+   // NSLog(@"screenName from tweetsviewcontrolle %@",detailvc.screenName);
     detailvc.posterImage =tweetsDic[@"user"][@"profile_image_url"];
     detailvc.tweetText = tweetsDic[@"text"];
-    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:detailvc];
-   // [self.window addSubview:navController.view];
-    NSLog(@"self.navigationController %@",self.navigationController);
     [self.navigationController pushViewController:detailvc animated:YES];
     
-    
 }
-
 
 
 - (void)onSignOutButton {

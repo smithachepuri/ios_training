@@ -11,8 +11,8 @@
 
 @interface TweetDetailViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *twitterId;
-
 @property (strong, nonatomic) IBOutlet UIImageView *profileImage;
+
 
 @property (strong, nonatomic) IBOutlet UILabel *name;
 @property (strong, nonatomic) IBOutlet UILabel *text;
@@ -37,7 +37,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.name setText:self.screenName];
+    NSLog(@"inside detailView");
+    NSLog(@"screeNName %@",self.screenName);
+    
+    //[self.name setText:self.screenName];
     [self.text setText:self.tweetText];
     
     

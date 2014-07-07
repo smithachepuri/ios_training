@@ -189,7 +189,9 @@
 
 - (void)updateRootVC {
     NSLog(@"currentVC %@", self.currentVC);
-    self.window.rootViewController = self.currentVC;
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:[self currentVC]];
+    self.window.rootViewController = nvc;
+   // self.window.rootViewController = self.currentVC;
 }
 
 
