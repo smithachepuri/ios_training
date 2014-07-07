@@ -63,7 +63,9 @@
     
    [User setCurrentUser: nil];
     NSLog(@"before getting the view controoler: rootViewController %@" ,[self.window rootViewController]);
-     self.window.rootViewController = [self currentVC ];
+     UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:[self currentVC]];
+    
+     self.window.rootViewController = nvc;
     NSLog(@"after setting to the current VC rootViewController %@", [self.window rootViewController]);
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateRootVC) name:UserDidLoginNotification object:nil];
@@ -165,14 +167,19 @@
     NSLog(@"Inside the twwetsVC instance %@",self.tweetsVC);
     if (!self.tweetsVC) {
          self.tweetsVC = [[TweetsViewController alloc] init];
+        //create a navigation controller
+       //UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:self.tweetsVC];
+        //[self.window addSubview:navController.view]; // this is an important line if missed out dont show navController
+        //navController.
     }
+   // NSLog(@"navigation controller %@", self.navigationController);
     NSLog(@"after initializing tweets COntrooler %@",self.tweetsVC);
     
     return self.tweetsVC;
 }
 
 - (LoginViewController *)setLoginVC {
-    NSLog(@"Inside the twwetsVC instance %@",self.loginVC);
+    NSLog(@"Inside the setlogin instance %@",self.loginVC);
     if (!self.loginVC) {
         self.loginVC = [[LoginViewController alloc] init];
     }
