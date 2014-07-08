@@ -17,16 +17,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hil-ak-Wbt">
-                    <rect key="frame" x="20" y="130" width="274" height="418"/>
+                    <rect key="frame" x="3" y="103" width="300" height="445"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
-                <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0iv-nw-iHS">
-                    <rect key="frame" x="31" y="29" width="259" height="74"/>
+                <navigationBar contentMode="scaleAspectFit" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0iv-nw-iHS">
+                    <rect key="frame" x="3" y="29" width="315" height="74"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <color key="barTintColor" red="0.18229787371426087" green="0.92711303115395383" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <items>
                         <navigationItem title="Home" prompt="" id="nXT-Sq-alR">
-                            <barButtonItem key="leftBarButtonItem" style="plain" id="JQc-IM-5m3">
+                            <barButtonItem key="leftBarButtonItem" title="Sign Out" style="plain" id="JQc-IM-5m3">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ptF-Lj-Xpz">
                                     <rect key="frame" x="16" y="30" width="60" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -34,17 +35,15 @@
                                     <state key="normal" title="Sign Out">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="onSignOut:" destination="-1" eventType="touchUpInside" id="GYk-sn-oYX"/>
+                                    </connections>
                                 </button>
                             </barButtonItem>
-                            <barButtonItem key="rightBarButtonItem" style="plain" id="49G-Jo-SHD">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vcW-6j-F3R">
-                                    <rect key="frame" x="186" y="30" width="57" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <state key="normal">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                </button>
+                            <barButtonItem key="rightBarButtonItem" title="New" id="iyt-HS-0zI">
+                                <connections>
+                                    <action selector="onClickOfNew:" destination="-1" id="9w2-aO-2lQ"/>
+                                </connections>
                             </barButtonItem>
                         </navigationItem>
                     </items>

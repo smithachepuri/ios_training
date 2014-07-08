@@ -27,7 +27,7 @@
         NSLog(@"Inside initiwitNibName");
     }
     
-    [self reload];
+   
     return self;
 }
 
@@ -51,10 +51,4 @@
 }
 
 
--(void)reload {
-    
-    
-    
-    
-}
 @end
