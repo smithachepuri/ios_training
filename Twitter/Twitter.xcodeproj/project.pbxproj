@@ -36,8 +36,6 @@
 		CAF9FFB9196A6E3300E459B4 /* ComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAF9FFB7196A6E3300E459B4 /* ComposeViewController.xib */; };
 		CAF9FFBD196A8F0200E459B4 /* ComposeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF9FFBB196A8F0200E459B4 /* ComposeViewCell.m */; };
 		CAF9FFBE196A8F0200E459B4 /* ComposeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAF9FFBC196A8F0200E459B4 /* ComposeViewCell.xib */; };
-		CAF9FFC2196B725900E459B4 /* CreateTweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF9FFC0196B725900E459B4 /* CreateTweetViewController.m */; };
-		CAF9FFC3196B725900E459B4 /* CreateTweetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAF9FFC1196B725900E459B4 /* CreateTweetViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,9 +92,6 @@
 		CAF9FFBA196A8F0200E459B4 /* ComposeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeViewCell.h; sourceTree = "<group>"; };
 		CAF9FFBB196A8F0200E459B4 /* ComposeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeViewCell.m; sourceTree = "<group>"; };
 		CAF9FFBC196A8F0200E459B4 /* ComposeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeViewCell.xib; sourceTree = "<group>"; };
-		CAF9FFBF196B725900E459B4 /* CreateTweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTweetViewController.h; sourceTree = "<group>"; };
-		CAF9FFC0196B725900E459B4 /* CreateTweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTweetViewController.m; sourceTree = "<group>"; };
-		CAF9FFC1196B725900E459B4 /* CreateTweetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateTweetViewController.xib; sourceTree = "<group>"; };
 		EF6588BDBFC14C2AAEAF8F0D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,9 +192,6 @@
 				CAF9FFBA196A8F0200E459B4 /* ComposeViewCell.h */,
 				CAF9FFBB196A8F0200E459B4 /* ComposeViewCell.m */,
 				CAF9FFBC196A8F0200E459B4 /* ComposeViewCell.xib */,
-				CAF9FFBF196B725900E459B4 /* CreateTweetViewController.h */,
-				CAF9FFC0196B725900E459B4 /* CreateTweetViewController.m */,
-				CAF9FFC1196B725900E459B4 /* CreateTweetViewController.xib */,
 			);
 			path = Twitter;
 			sourceTree = "<group>";
@@ -321,7 +313,6 @@
 			files = (
 				CAA9251719677271005B99EC /* TweetsCell.xib in Resources */,
 				CAA9251E196A0544005B99EC /* TweetDetailViewController.xib in Resources */,
-				CAF9FFC3196B725900E459B4 /* CreateTweetViewController.xib in Resources */,
 				CA0FC18F1964EE360023D624 /* TweetsViewController.xib in Resources */,
 				CA5EED0419624EBA00E0AEE1 /* InfoPlist.strings in Resources */,
 				CAF9FFB9196A6E3300E459B4 /* ComposeViewController.xib in Resources */,
@@ -383,7 +374,6 @@
 				CA0FC18E1964EE360023D624 /* TweetsViewController.m in Sources */,
 				CA4D8A1F1964F746009DEF24 /* ResponseObject.m in Sources */,
 				CA4D8A221965DEF8009DEF24 /* Tweet.m in Sources */,
-				CAF9FFC2196B725900E459B4 /* CreateTweetViewController.m in Sources */,
 				CA0FC1931964EEF00023D624 /* User.m in Sources */,
 				CA5EED0A19624EBA00E0AEE1 /* AppDelegate.m in Sources */,
 				CA5EED2B19633C0F00E0AEE1 /* TwitterClient.m in Sources */,

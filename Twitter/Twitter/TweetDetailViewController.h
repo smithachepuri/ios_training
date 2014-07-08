@@ -13,7 +13,7 @@
 
 @property (weak, nonatomic) NSString *posterImage;
 
-@property (weak, nonatomic) NSString  *screenName;
+@property (weak, nonatomic) NSString  *screenName1;
 
 @property (weak, nonatomic) NSString  *timestamp;
 

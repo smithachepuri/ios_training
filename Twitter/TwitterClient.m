@@ -49,6 +49,26 @@ failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 
 
 
+-(AFHTTPRequestOperation *)updateTweetsWithSuccess: (void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                                           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+                                        parameters:(NSMutableDictionary*)params
+{
+    NSLog(@"Inside the updateTweets %@", params);
+    
+   return [self POST:@"1.1/statuses/update.json" parameters:params success:success
+       failure:failure];
+    
+    
+}
+
+-(AFHTTPRequestOperation *)userWithSuccess: (void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                                           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+                                parameters:(NSMutableDictionary*)param
+{
+    return [self GET:@"1.1/users/show.json" parameters:param success:success failure:failure];
+}
+
+
 
 
 @end

@@ -8,7 +8,6 @@
             <connections>
                 <outlet property="name" destination="Z5x-Tf-wgg" id="GRw-Gc-zUS"/>
                 <outlet property="profileImage" destination="g3L-kc-knM" id="XAe-dZ-8Oh"/>
-                <outlet property="screenName" destination="Z5x-Tf-wgg" id="iVS-Lx-0RY"/>
                 <outlet property="text" destination="XJJ-Hu-Fdj" id="vMK-nl-Ua0"/>
                 <outlet property="time" destination="p4p-uW-EYl" id="EvY-6A-gxb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -26,7 +25,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="timestamp" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4p-uW-EYl">
-                    <rect key="frame" x="40" y="212" width="108" height="21"/>
+                    <rect key="frame" x="30" y="212" width="108" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>

@@ -106,7 +106,11 @@
     //NSLog(@"cell For RowAt Index path :%d", indexPath.row);
     TweetsCell *cell =[tableView dequeueReusableCellWithIdentifier:@"TweetsCell"];
    NSDictionary *tweetsDic = self.tweets[indexPath.row] ;
-    cell.screenName.text = tweetsDic[@"user"] [@"screen_name"];
+    
+    
+    NSLog(@"screen Name from celLForRow %@",tweetsDic[@"user"][@"screen_name"]);
+    cell.screenName.text = tweetsDic[@"user"][@"screen_name"];
+    NSLog(@"cell.screenName.text%@",cell.screenName.text);
     NSURL *url = [NSURL URLWithString:tweetsDic[@"user"][@"profile_image_url"]];
     [cell.imageView setImageWithURL:url];
     cell.tweetText.text = tweetsDic[@"text"];
@@ -128,7 +132,7 @@
     TweetDetailViewController *detailvc = [[TweetDetailViewController alloc] initWithNibName:@"TweetDetailViewController" bundle:nil];
    
     NSDictionary *tweetsDic = self.tweets[indexPath.row] ;
-    detailvc.screenName = tweetsDic[@"user"][@"screen_name"];
+    detailvc.screenName1 = tweetsDic[@"user"][@"screen_name"];
    // NSLog(@"screenName from tweetsviewcontrolle %@",detailvc.screenName);
     detailvc.posterImage =tweetsDic[@"user"][@"profile_image_url"];
     detailvc.tweetText = tweetsDic[@"text"];
@@ -163,6 +167,7 @@
 }
 
 
+/*
 
 - (IBAction)onClickOfNew:(id)sender {
     
@@ -170,27 +175,42 @@
     
     
     ComposeViewController *composevc = [[ComposeViewController alloc] initWithNibName:@"ComposeViewController" bundle:nil];
-    composevc.screenName = tweetsDic[@"user"][@"screen_name"];
+    composevc.scrnName = tweetsDic[@"user"][@"screen_name"];
     composevc.posterImage = tweetsDic[@"user"][@"profile_image_url"];
     UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:composevc];
      [self.navigationController pushViewController:composevc animated:YES];
     
 }
+ 
+ */
 
-/*
+
 - (IBAction)onClickOfNew:(id)sender {
     
-    NSDictionary *tweetsDic = self.tweets[0] ;
+      ComposeViewController *composevc = [[ComposeViewController alloc] initWithNibName:@"ComposeViewController" bundle:nil];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [dict setObject:@"smithac07" forKey:@"screen_name"];
+    [[TwitterClient instance] userWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"response object for user %@", responseObject);
+             composevc.scrnName = @"Smitha";//responseObject[@"name"];
+        UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:composevc];
+        [self.navigationController pushViewController:composevc animated:YES];
+       // composevc.posterImage = responseObject[@"profile_image_url"];
+        //NSLog(@"screenName %@",responseObject)
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error when getting the response %@",[error description]);
+    }parameters: dict];
+
     
     
-    CreateTweetViewController *composevc = [[ComposeViewController alloc] initWithNibName:@"CreateTweetViewController" bundle:nil];
-    composevc.screenName = tweetsDic[@"user"][@"screen_name"];
-    composevc.posterImage = tweetsDic[@"user"][@"profile_image_url"];
-    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:composevc];
-    [self.navigationController pushViewController:composevc animated:YES];
+    //composevc.scrnName = tweetsDic[@"user"][@"screen_name"];
+    //composevc.posterImage = tweetsDic[@"user"][@"profile_image_url"];
+ 
     
 }
-*/
+
+
 - (IBAction)onSignOut:(id)sender {
 }
 

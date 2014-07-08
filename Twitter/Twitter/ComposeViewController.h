@@ -13,6 +13,8 @@
 
 @property (weak, nonatomic) NSString *posterImage;
 
-@property (weak, nonatomic) NSString  *screenName;
+@property (weak, nonatomic) NSString  *scrnName;
+
+@property (weak, nonatomic) NSString  *replyTo;
 
 @end

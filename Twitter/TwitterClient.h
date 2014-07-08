@@ -20,6 +20,12 @@
 
 
 -(AFHTTPRequestOperation *)updateTweetsWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                                           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+                                           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure parameters:(NSMutableDictionary*)params;
+
+
+-(AFHTTPRequestOperation *)userWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                                           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+                                parameters:(NSMutableDictionary*)params;
+
 
 @end

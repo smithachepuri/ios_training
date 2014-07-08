@@ -9,6 +9,7 @@
 #import "ComposeViewController.h"
 #import "ComposeViewCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "TwitterClient.h"
 
 @interface ComposeViewController ()
 
@@ -78,6 +79,7 @@
     ComposeViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"ComposeViewCell"];
     NSURL *url = [NSURL URLWithString:self.posterImage];
     [cell.imageView setImageWithURL:url];
+    [cell.textInput setText: [NSString stringWithFormat:@"@%@",self.replyTo]];
    
     return cell;
 }
@@ -98,25 +100,26 @@
 
 - (IBAction)onclickOfTweet:(id)sender {
     NSLog(@"Need to persist the data, %@", sender);
-   // NSIndexPath *indexPath = [[NSIndexPath alloc]initWithIndex:0];
+   NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+   //NSIndexPath *indexPath = [[NSIndexPath alloc]initWithIndex:0];
     
-    NSIndexPath *path = [[NSIndexPath alloc]init];
+   // NSIndexPath *path = [[NSIndexPath alloc]init];
  
-    [self.tableView cellForRowAtIndexPath:path] ;
+    //[self.tableView cellForRowAtIndexPath:indexPath] ;
     
-    NSLog(@"self.tableView cellForRow %@", [self.tableView cellForRowAtIndexPath:path]);
-    
-    [self persistTweet];
-    
-   // https://api.twitter.com/1.1/statuses/update.json
-    
+    NSLog(@"self.tableView cellForRow %@", [[(ComposeViewCell*)[self.tableView cellForRowAtIndexPath:indexPath] textInput] text]);
+    NSString *textInput =[[(ComposeViewCell*)[self.tableView cellForRowAtIndexPath:indexPath] textInput] text];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [dict setObject:textInput forKey:@"status"];
+    [[TwitterClient instance] updateTweetsWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+       // NSLog(@"response object after update Tweets %@", responseObject);
+       
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error when getting the response %@",[error description]);
+    } parameters:dict];
 }
 
--(void) persistTweet {
-   // NSLog(@"the tweetText entered  %@", self.textInput);
-    
-    
-}
 
 
 
